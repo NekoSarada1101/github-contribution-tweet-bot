@@ -1,5 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+from requests_oauthlib import OAuth1Session
+from settings import *
+
+twitter = OAuth1Session(CK, CS, AT, AS)
 
 
 def main():
@@ -15,7 +19,11 @@ def main():
     today = contributions[0]  # type: str
     print("today=" + today)
 
-    comparison = str(int(contributions[0]) - int(contributions[1]))  # type: str
+    comparison = int(contributions[0]) - int(contributions[1])
+    if comparison < 0:
+        comparison = str(comparison)
+    elif comparison >= 0:
+        comparison = "+" + str(comparison)
     print("comparison=" + comparison)
 
     streak = 0
@@ -25,6 +33,19 @@ def main():
         streak = streak + 1
     streak = str(streak)
     print("streak=" + streak)
+
+    text = "GitHub Contributions\n\n" \
+           "今日のContributions\n" \
+           "　{} contributions\n\n" \
+           "今日と昨日の比較\n" \
+           "　{} contributions\n\n" \
+           "連続Contributions日数\n" \
+           "　{}日".format(today, comparison, streak)  # type: str
+
+    endpoint_url = "https://api.twitter.com/1.1/statuses/update.json"  # type: str
+    params = {'status': text}  # type: dict
+    response = twitter.post(url=endpoint_url, params=params)  # type: response
+    print(response)
 
 
 if __name__ == "__main__":
