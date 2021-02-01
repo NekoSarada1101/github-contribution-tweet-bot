@@ -6,7 +6,7 @@ from settings import *
 twitter = OAuth1Session(CK, CS, AT, AS)
 
 
-def main():
+def main(data, context):
     response = requests.get("https://github.com/users/NekoSarada1101/contributions")
     print(response)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -49,4 +49,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main("data", "context")
