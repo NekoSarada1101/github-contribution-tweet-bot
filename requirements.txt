@@ -1,0 +1,4 @@
+requests==2.24.0
+google-api-python-client==1.11.0
+beautifulsoup4
+requests-oauthlib
