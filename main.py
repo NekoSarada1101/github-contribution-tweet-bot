@@ -15,7 +15,11 @@ def main():
     today = contributions[0]  # type: str
     print("today=" + today)
 
-    comparison = str(int(contributions[0]) - int(contributions[1]))  # type: str
+    comparison = int(contributions[0]) - int(contributions[1])
+    if comparison < 0:
+        comparison = str(comparison)
+    elif comparison >= 0:
+        comparison = "+" + str(comparison)
     print("comparison=" + comparison)
 
     streak = 0
