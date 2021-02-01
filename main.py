@@ -7,9 +7,13 @@ def main():
     print(response)
     soup = BeautifulSoup(response.text, "html.parser")
 
+    contributions = []  # type: list
     for tags in soup.find_all("rect"):
-        print(tags.get('data-count'))
+        contributions.append(tags.get('data-count'))
+    contributions.reverse()
 
+    today = contributions[0]  # type: str
+    print("today=" + today)
 
 if __name__ == "__main__":
     main()
