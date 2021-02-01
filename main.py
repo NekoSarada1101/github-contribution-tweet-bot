@@ -15,5 +15,14 @@ def main():
     today = contributions[0]  # type: str
     print("today=" + today)
 
+    streak = 0
+    for i in contributions:
+        if i == "0":
+            break
+        streak = streak + 1
+    streak = str(streak)
+    print("streak=" + streak)
+
+
 if __name__ == "__main__":
     main()
