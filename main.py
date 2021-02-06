@@ -14,7 +14,8 @@ def main(data, context):
 
     contributions = []  # type: list
     for tags in soup.find_all("rect"):
-        contributions.append(tags.get('data-count'))
+        if tags.get('data-count') is not None:
+            contributions.append(tags.get('data-count'))
     contributions.reverse()
     print(contributions)
 
