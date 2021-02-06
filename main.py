@@ -9,12 +9,14 @@ twitter = OAuth1Session(CK, CS, AT, AS)
 def main(data, context):
     response = requests.get("https://github.com/users/NekoSarada1101/contributions")
     print(response)
+    print(response.text)
     soup = BeautifulSoup(response.text, "html.parser")
 
     contributions = []  # type: list
     for tags in soup.find_all("rect"):
         contributions.append(tags.get('data-count'))
     contributions.reverse()
+    print(contributions)
 
     today = contributions[0]  # type: str
     print("today=" + today)
@@ -46,6 +48,7 @@ def main(data, context):
     params = {'status': text}  # type: dict
     response = twitter.post(url=endpoint_url, params=params)  # type: response
     print(response)
+    print(response.text)
 
 
 if __name__ == "__main__":
