@@ -13,3 +13,7 @@ GitHubのcontribution数などをツイートする。
 * [Cloud Functions](https://cloud.google.com/functions?hl=ja)
 * [Cloud Pub/Sub](https://cloud.google.com/pubsub?hl=ja)
 * [Cloud Scheduler](https://cloud.google.com/scheduler?hl=ja)
+
+### ライセンス
+
+[MIT](https://github.com/NekoSarada1101/github-contribution-tweet-bot/blob/main/LICENSE)
